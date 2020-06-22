@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use App\User;
+use App\rule;
 class HomeController extends Controller
 {
     /**
@@ -23,10 +25,15 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {   $admins = DB::select('select * from users where type = "أدمن"');
-        $workers = DB::select('select * from users where type = "موظف"');
-        $service = DB::select('select * from users where type = "خدمة عملاء"');
-        $arr = ["admins"=>$admins, "workers"=>$workers, "service"=>$service];
+    {   $workers =User::all();
+        $rules =rule::all();
+        $actions = Auth::user()->rule->actions;
+        $prevs = [];
+        foreach($actions as $action){
+            $prevs[] = $action->name;
+        }
+        $arr = ["workers"=>$workers,"actions"=>$prevs,"rules"=>$rules];
+        session()->put('Actions', $prevs);
         return view('home',$arr);
     }
 }

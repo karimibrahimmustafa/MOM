@@ -26,9 +26,9 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <select class="form-control" name="type">
-                                <option>أدمن</option>
-                                <option>موظف</option>
-                                <option>خدمة عملاء</option>
+                                @foreach ($rules as $rule)
+                                <option value={{$rule->id}}>{{$rule->name}}</option>
+                                @endforeach
                                 </select>
                             </div>
                             <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('نوع الوظيفة') }}</label>

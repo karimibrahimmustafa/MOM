@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/workers.js') }}" defer></script>
+    <script src="{{ asset('js/rules.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -63,7 +64,12 @@
                 </div>
             </div>
         </nav>
-
+        <div class="sidenav">
+            <a href="home">الموظفين</a>
+            <a href="rules">الصلاحيات</a>
+            <a href="#">الخامات</a>
+            <a href="#">Contact</a>
+          </div>
         <main class="py-4">
             @yield('content')
         </main>
