@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/rules', 'RuleController@index');
+Route::get('/add', 'add_accessoriesController@adding');
 Route::get('/rule', 'RuleController@add')->name('rule');
 Route::post('/RemoveId', 'WorkerController@remove');
 
